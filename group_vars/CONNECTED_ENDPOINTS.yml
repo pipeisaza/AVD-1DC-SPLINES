@@ -1,0 +1,58 @@
+---
+# Definition of connected endpoints in the fabric.
+servers:
+  # Name of the defined server.
+  dc1-leaf1-server1:
+    # Definition of adapters on the server.
+    adapters:
+    - type: server
+      # Name of the server interfaces that will be used in the description of each interface
+      server_ports: [ PCI1, PCI2 ]
+      # Device ports where the server_ports are connected.
+      switch_ports: [ Ethernet5, Ethernet5 ]
+      # Device names where the server_ports are connected.
+      switches: [ DC1-LEAF1A, DC1-LEAF1B ]
+      # VLANs that will be configured on these ports.
+      vlans: 11-12
+      # Native VLAN to be used on these ports.
+      native_vlan: 11
+      # L2 mode of the port.
+      mode: trunk
+      # Spanning tree portfast configuration on this port.
+      spanning_tree_portfast: edge
+      # Definition of the pair of ports as port channel.
+      port_channel:
+        # Description of the port channel interface.
+        description: PortChannel dc1-leaf1-server1
+        # Port channel mode for LACP.
+        mode: active
+
+    - type: ilo
+      server_ports: [ iLO ]
+      switch_ports: [ Ethernet4 ]
+      switches: [ DC1-LEAF1A ]
+      vlans: 11
+      mode: access
+      spanning_tree_portfast: edge
+
+  dc1-leaf2-server1:
+    adapters:
+    - type: server
+      server_ports: [ PCI1, PCI2 ]
+      switch_ports: [ Ethernet5, Ethernet5 ]
+      switches: [ DC1-LEAF2A, DC1-LEAF2B ]
+      vlans: 11-12
+      native_vlan: 11
+      mode: trunk
+      spanning_tree_portfast: edge
+      port_channel:
+        description: PortChannel dc1-leaf2-server1
+        mode: active
+
+    - type: ilo
+      server_ports: [ iLO ]
+      switch_ports: [ Ethernet4 ]
+      switches: [ DC1-LEAF2B ]
+      vlans: 12
+      mode: access
+      spanning_tree_portfast: edge

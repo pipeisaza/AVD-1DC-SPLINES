@@ -1,0 +1,10 @@
+Type,Node,Node Interface,Leaf IP Address,Peer Type,Peer Node,Peer Interface,Peer IP Address
+l3leaf,DC1-LEAF1A,Ethernet1,10.91.250.9/31,l3leaf,DC1-SPINE1,Ethernet1,10.91.250.4/31
+l3leaf,DC1-LEAF1A,Ethernet2,10.91.250.11/31,l3leaf,DC1-SPINE2,Ethernet1,10.91.250.10/31
+l3leaf,DC1-LEAF1B,Ethernet1,10.91.250.13/31,l3leaf,DC1-SPINE1,Ethernet2,10.91.250.12/31
+l3leaf,DC1-LEAF1B,Ethernet2,10.91.250.15/31,l3leaf,DC1-SPINE2,Ethernet2,10.91.250.6/31
+l3leaf,DC1-LEAF2A,Ethernet1,10.91.250.17/31,l3leaf,DC1-SPINE1,Ethernet3,10.91.250.16/31
+l3leaf,DC1-LEAF2A,Ethernet2,10.91.250.19/31,l3leaf,DC1-SPINE2,Ethernet3,10.91.250.18/31
+l3leaf,DC1-LEAF2B,Ethernet1,10.91.250.21/31,l3leaf,DC1-SPINE1,Ethernet4,10.91.250.20/31
+l3leaf,DC1-LEAF2B,Ethernet2,10.91.250.23/31,l3leaf,DC1-SPINE2,Ethernet4,10.91.250.22/31
+l3leaf,DC1-SPINE1,Ethernet1,10.91.250.4/31,l3leaf,DC1-SPINE2,Ethernet1,10.91.250.10/31

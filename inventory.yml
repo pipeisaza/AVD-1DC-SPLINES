@@ -1,0 +1,51 @@
+---
+all:
+  children:
+    CVP:
+      hosts:
+        cv_ztp:
+          ansible_host: 10.31.100.4
+          ansible_user: root
+          ansible_password: arista123
+        cv_server:
+          ansible_httpapi_host: 10.31.100.4
+          ansible_host: 10.31.100.4
+          ansible_user: ansible
+          ansible_password: ansible
+          ansible_connection: httpapi
+          ansible_httpapi_use_ssl: true
+          ansible_httpapi_validate_certs: false
+          ansible_network_os: eos
+          ansible_httpapi_port: 443
+          # Configuration to get Virtual Env information
+          ansible_python_interpreter: $(which python3)
+
+    FABRIC:
+      children:
+        DC1:
+          children:
+            DC1_SPLINES:
+              hosts:
+                DC1-SPINE1:
+                  ansible_host: 10.31.100.111
+                DC1-SPINE2:
+                  ansible_host: 10.31.100.112
+            DC1_LEAVES:
+              hosts:
+                DC1-LEAF1A:
+                  ansible_host: 10.31.100.101
+                DC1-LEAF1B:
+                  ansible_host: 10.31.100.102
+                DC1-LEAF2A:
+                  ansible_host: 10.31.100.103
+                DC1-LEAF2B:
+                  ansible_host: 10.31.100.104
+
+        NETWORK_SERVICES:
+          children:
+            DC1_LEAVES:
+            DC1_SPLINES:
+        CONNECTED_ENDPOINTS:
+          children:
+            DC1_LEAVES:
+            DC1_SPLINES:
